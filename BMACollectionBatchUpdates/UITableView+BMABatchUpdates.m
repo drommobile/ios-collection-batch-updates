@@ -75,6 +75,7 @@
                                 withRowAnimation:UITableViewRowAnimationAutomatic];
                     break;
                 case BMACollectionUpdateTypeMove:
+                case BMACollectionUpdateTypeMoveAndReload:
                     [self moveRowAtIndexPath:itemUpdate.indexPath
                                  toIndexPath:itemUpdate.indexPathNew];
                     break;
@@ -106,6 +107,22 @@
         }
     }
 
+    [self endUpdates];
+
+    [self beginUpdates];
+    for (BMACollectionUpdate *update in updates) {
+        if ([update isItemUpdate]) {
+            BMACollectionItemUpdate *itemUpdate = (BMACollectionItemUpdate *)update;
+            if (update.type == BMACollectionUpdateTypeMoveAndReload) {
+                if (reloadCellBlock) {
+                    UITableViewCell *cell = [self cellForRowAtIndexPath:itemUpdate.indexPathNew];
+                    if (cell) {
+                        reloadCellBlock(cell, itemUpdate.indexPathNew);
+                    }
+                }
+            }
+        }
+    }
     [self endUpdates];
 
     if (completionBlock) {

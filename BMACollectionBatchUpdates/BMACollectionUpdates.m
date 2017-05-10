@@ -223,11 +223,19 @@
 
                     NSIndexPath *oldIndexPath = [NSIndexPath indexPathForItem:oldIndex inSection:oldSectionIndex];
                     [indexPathsForMovedItems addObject:oldIndexPath];
+                    id<BMAUpdatableCollectionItem> newItem = newSection.items[newIndexPath.item];
 
-                    [updates addObject:[BMACollectionItemUpdate updateWithType:BMACollectionUpdateTypeMove
-                                                                     indexPath:oldIndexPath
-                                                                  newIndexPath:newIndexPath
-                                                                        object:item.uid]];
+                    if (![item isEqual:newItem]) {
+                        [updates addObject:[BMACollectionItemUpdate updateWithType:BMACollectionUpdateTypeMoveAndReload
+                                                                         indexPath:oldIndexPath
+                                                                      newIndexPath:newIndexPath
+                                                                            object:item.uid]];
+                    } else {
+                        [updates addObject:[BMACollectionItemUpdate updateWithType:BMACollectionUpdateTypeMove
+                                                                         indexPath:oldIndexPath
+                                                                      newIndexPath:newIndexPath
+                                                                            object:item.uid]];
+                    }
                 }
             }
         }
@@ -283,6 +291,8 @@ static inline NSString *NSStringFromBMACollectionUpdateType(BMACollectionUpdateT
         return @"move";
     } else if (type == BMACollectionUpdateTypeReload) {
         return @"reload";
+    } else if (type == BMACollectionUpdateTypeMoveAndReload) {
+        return @"move_reload";
     }
     return @"unknown";
 }

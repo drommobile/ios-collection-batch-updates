@@ -51,6 +51,7 @@
                             [self insertItemsAtIndexPaths:@[ itemUpdate.indexPathNew ]];
                             break;
                         case BMACollectionUpdateTypeMove:
+                        case BMACollectionUpdateTypeMoveAndReload:
                             [self moveItemAtIndexPath:itemUpdate.indexPath toIndexPath:itemUpdate.indexPathNew];
                             break;
                         default:
@@ -86,7 +87,7 @@
         return;
     }
     for (BMACollectionUpdate *update in updates) {
-        if ([update isItemUpdate] && update.type == BMACollectionUpdateTypeReload) {
+        if ([update isItemUpdate] && (update.type == BMACollectionUpdateTypeReload || update.type == BMACollectionUpdateTypeMoveAndReload)) {
             BMACollectionItemUpdate *itemUpdate = (BMACollectionItemUpdate *)update;
             UICollectionViewCell *cell = [self cellForItemAtIndexPath:itemUpdate.indexPath];
             if (cell) {

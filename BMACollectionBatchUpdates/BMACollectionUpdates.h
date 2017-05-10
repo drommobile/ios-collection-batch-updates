@@ -41,7 +41,8 @@ typedef NS_ENUM(NSInteger, BMACollectionUpdateType) {
     BMACollectionUpdateTypeInsert,
     BMACollectionUpdateTypeDelete,
     BMACollectionUpdateTypeMove,
-    BMACollectionUpdateTypeReload
+    BMACollectionUpdateTypeReload,
+    BMACollectionUpdateTypeMoveAndReload
 };
 
 @interface BMACollectionUpdate : NSObject
