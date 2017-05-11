@@ -82,7 +82,7 @@ Simple example: online status which can be either online or offline. When it cha
 @end
 ```
 
-## How to install
+## How to install (Badoo original repo)
 
 ### Using CocoaPods
 
@@ -104,6 +104,25 @@ Simple example: online status which can be either online or offline. When it cha
 ### Manually
 
 1. Clone, add as a submodule or [download.](https://github.com/badoo/ios-collection-batch-updates/archive/master.zip)
+2. Add all the files under `BMACollectionBatchUpdates` to your project.
+3. Make sure your project is configured to use ARC.
+
+## How to install (this fork)
+
+### Using CocoaPods
+
+
+1. Include the following line in your `Podfile`:
+
+    ```
+    pod 'BMACollectionBatchUpdates', :git => 'https://github.com/drommobile/ios-collection-batch-updates.git'
+    ```
+
+2. Run `pod install`
+
+### Manually
+
+1. Clone, add as a submodule or [download.](https://github.com/drommobile/ios-collection-batch-updates/archive/master.zip)
 2. Add all the files under `BMACollectionBatchUpdates` to your project.
 3. Make sure your project is configured to use ARC.
 
