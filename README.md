@@ -1,4 +1,4 @@
-# BMACollectionBatchUpdates [![Build Status](https://api.travis-ci.org/badoo/ios-collection-batch-updates.svg)](https://travis-ci.org/badoo/ios-collection-batch-updates)  [![codecov.io](https://codecov.io/github/badoo/ios-collection-batch-updates/coverage.svg?branch=master)](https://codecov.io/github/badoo/ios-collection-batch-updates?branch=master) [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/BMACollectionBatchUpdates.svg)](https://img.shields.io/cocoapods/v/BMACollectionBatchUpdates.svg)
+# BMACollectionBatchUpdates [![Build Status](https://api.travis-ci.org/drommobile/ios-collection-batch-updates.svg)](https://travis-ci.org/drommobile/ios-collection-batch-updates)  [![codecov.io](https://codecov.io/github/drommobile/ios-collection-batch-updates/coverage.svg?branch=master)](https://codecov.io/github/drommobile/ios-collection-batch-updates?branch=master)
 `BMACollectionBatchUpdates` is a set of classes to generate updates and extensions to `UICollectionView` and `UITableView` to perform them safely in a batch manner.
 
 <div align="center">
