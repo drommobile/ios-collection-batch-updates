@@ -31,7 +31,7 @@
        applyChangesToModelBlock:(void (^)(void))applyChangesToModelBlock
                 reloadCellBlock:(void (^)(UICollectionViewCell *cell, NSIndexPath *indexPath))reloadCellBlock
                 completionBlock:(void (^)(BOOL finished))completionBlock {
-    if (!updates) {
+    if (updates.count == 0) {
         applyChangesToModelBlock();
         [self reloadData];
         if (completionBlock) {

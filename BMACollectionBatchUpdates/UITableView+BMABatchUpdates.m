@@ -31,7 +31,7 @@
        applyChangesToModelBlock:(void (^)(void))applyChangesToModelBlock
                 reloadCellBlock:(void (^)(UITableViewCell *cell, NSIndexPath *indexPath))reloadCellBlock
                 completionBlock:(void (^)(void))completionBlock {
-    if (!updates) {
+    if (updates.count == 0) {
         if (applyChangesToModelBlock) {
             applyChangesToModelBlock();
         }
