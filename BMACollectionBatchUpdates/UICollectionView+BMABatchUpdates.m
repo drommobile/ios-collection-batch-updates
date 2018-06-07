@@ -89,9 +89,15 @@
     for (BMACollectionUpdate *update in updates) {
         if ([update isItemUpdate] && (update.type == BMACollectionUpdateTypeReload || update.type == BMACollectionUpdateTypeMoveAndReload)) {
             BMACollectionItemUpdate *itemUpdate = (BMACollectionItemUpdate *)update;
-            UICollectionViewCell *cell = [self cellForItemAtIndexPath:itemUpdate.indexPath];
+            NSIndexPath *itemIndexPath;
+            if (update.type == BMACollectionUpdateTypeMoveAndReload) {
+                itemIndexPath = itemUpdate.indexPathNew;
+            } else {
+                itemIndexPath = itemUpdate.indexPath;
+            }
+            UICollectionViewCell *cell = [self cellForItemAtIndexPath:itemIndexPath];
             if (cell) {
-                reloadCellBlock(cell, itemUpdate.indexPath);
+                reloadCellBlock(cell, itemIndexPath);
             }
         }
     }
