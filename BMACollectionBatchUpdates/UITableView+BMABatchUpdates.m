@@ -27,6 +27,17 @@
 
 @implementation UITableView (BMABatchUpdates)
 
+- (void)bma_performBatchUpdates:(nullable NSArray<BMACollectionUpdate *> *)updates
+       applyChangesToModelBlock:(nullable void (^)(void))applyChangesToModelBlock
+                reloadCellBlock:(nullable void (^)(UITableViewCell *cell, NSIndexPath *indexPath))reloadCellBlock
+                completionBlock:(nullable void (^)(void))completionBlock {
+    [self bma_performBatchUpdates:updates
+                rowAnimationBlock:nil
+         applyChangesToModelBlock:applyChangesToModelBlock
+                  reloadCellBlock:reloadCellBlock
+                  completionBlock:completionBlock];
+}
+
 - (void)bma_performBatchUpdates:(NSArray<BMACollectionUpdate *> *)updates
               rowAnimationBlock:(UITableViewRowAnimation (^)(BMACollectionUpdate *update))rowAnimationBlock
        applyChangesToModelBlock:(void (^)(void))applyChangesToModelBlock
