@@ -46,7 +46,9 @@
 }
 
 - (void)performBatchUpdates:(NSArray *)updates forSections:(NSArray *)sections {
-    [self.tableView bma_performBatchUpdates:updates applyChangesToModelBlock:^{
+    [self.tableView bma_performBatchUpdates:updates rowAnimationBlock:^UITableViewRowAnimation(BMACollectionUpdate * _Nonnull update) {
+        return UITableViewRowAnimationAutomatic;
+    } applyChangesToModelBlock:^{
         self.primitiveSections = sections;
     } reloadCellBlock:^(UITableViewCell *cell, NSIndexPath *indexPath) {
         [self reloadCell:cell atIndexPath:indexPath];

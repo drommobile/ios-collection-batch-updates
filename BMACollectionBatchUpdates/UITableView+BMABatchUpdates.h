@@ -32,10 +32,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Updates the receiver with specified changes in animated fashion
 /// @param updates updates to be performed: array of BMACollectionUpdate instances, if nil reloads data
+/// @param rowAnimationBlock block that returns concrete row animation for an update
 /// @param applyChangesToModelBlock block in which changes should be applied
 /// @param reloadCellBlock optional block in which cells are to be updated
 /// @param completionBlock optional completion block
 - (void)bma_performBatchUpdates:(nullable NSArray<BMACollectionUpdate *> *)updates
+              rowAnimationBlock:(nullable UITableViewRowAnimation (^)(BMACollectionUpdate *update))rowAnimationBlock
        applyChangesToModelBlock:(nullable void (^)(void))applyChangesToModelBlock
                 reloadCellBlock:(nullable void (^)(UITableViewCell *cell, NSIndexPath *indexPath))reloadCellBlock
                 completionBlock:(nullable void (^)(void))completionBlock;

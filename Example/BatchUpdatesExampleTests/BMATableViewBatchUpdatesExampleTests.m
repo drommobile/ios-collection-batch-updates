@@ -61,6 +61,7 @@
                                 eliminatesDuplicates:self.containsUniqueUsers
                                           completion:^(NSArray *sections, NSArray *updates) {
                                             [self.controller.tableView bma_performBatchUpdates:updates
+                                                                             rowAnimationBlock:nil
                                                                       applyChangesToModelBlock:^{
                                                 self.internalSections = sections;
                                             } reloadCellBlock:^(UITableViewCell *cell, NSIndexPath *indexPath) {
