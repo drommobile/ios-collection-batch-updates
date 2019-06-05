@@ -61,7 +61,7 @@
             NSInteger oldIndex = NSNotFound;
             if (oldSections) {
                 oldIndex = [oldSections indexOfObjectPassingTest:^BOOL(id<BMAUpdatableCollectionSection> oldSection, NSUInteger idx, BOOL *stop) {
-                    return [newSection.uid isEqualToString:oldSection.uid];
+                    return [newSection isEqual:oldSection];
                 }];
             }
 
@@ -75,7 +75,7 @@
         for (NSInteger oldIndex = 0; oldIndex < oldSections.count; ++oldIndex) {
             id<BMAUpdatableCollectionSection> oldSection = oldSections[oldIndex];
             NSInteger newIndex = [newSections indexOfObjectPassingTest:^BOOL(id<BMAUpdatableCollectionSection> newSection, NSUInteger idx, BOOL *stop) {
-                return [newSection.uid isEqualToString:oldSection.uid];
+                return [newSection isEqual:oldSection];
             }];
 
             if (oldIndex != newIndex) {
