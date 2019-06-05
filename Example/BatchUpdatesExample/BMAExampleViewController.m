@@ -351,6 +351,22 @@
     return [NSString stringWithFormat:@"%@ { uid = %@, items = %@ }", super.description, self.uid, self.items];
 }
 
+- (BOOL)isEqual:(id)object {
+    if (self == object) {
+        return YES;
+    }
+
+    if (![object isKindOfClass:[self class]]) {
+        return NO;
+    }
+
+    return [self isEqualToSection:(BMAExampleItemsSection *)object];
+}
+
+- (BOOL)isEqualToSection:(BMAExampleItemsSection *)section {
+    return [self.uid isEqual:section.uid];
+}
+
 @end
 
 #pragma mark -
